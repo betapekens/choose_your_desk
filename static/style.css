@@ -1,37 +1,62 @@
 /* General styles */
+/* General styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Roboto', 'Arial', sans-serif;
+    background-color: #f0f2f5;
     margin: 0;
     padding: 20px;
     text-align: center;
+    color: #333;
+    line-height: 1.6;
 }
 
 h1 {
-    color: #333;
+    color: #2c3e50;
     margin-bottom: 30px;
+    font-size: 2.8em;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: -1px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
 }
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    border-radius: 2px;
+}
+
 
 /* Desk Map Container */
 #deskMap {
     position: relative;
-    width: 800px;
-    height: 600px;
-    border: 2px solid #333;
+    width: 90%;
+    max-width: 1000px;
+    height: 70vh;
+    border: none;
     margin: 0 auto;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 /* Desk Styles */
 .desk {
-    width: 40px;
-    height: 40px;
-    background-color: #4CAF50;
+    width: 50px;
+    height: 50px;
+    background-color: #3498db;
     position: absolute;
-    border: 2px solid #333;
-    border-radius: 8px;
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -39,57 +64,50 @@ h1 {
     color: white;
     font-weight: bold;
     transition: all 0.3s ease;
-    font-size: 14px;
+    font-size: 12px; /* Changed from 16px to 12px */
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .desk.booked {
-    background-color: #f44336; /* Red for booked desks */
-    color: white;
+    background-color: #e74c3c;
 }
 
 .desk:hover {
-    background-color: #FFEB3B; /* Yellow on hover */
-    transform: scale(1.1);
-    border-color: #333;
+    background-color: #2ecc71;
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 /* Tooltip for desk status */
 .desk::after {
-    content: attr(data-name);  /* Show the name from data-name attribute */
+    content: attr(data-name);
     position: absolute;
-    bottom: -25px;
+    bottom: -30px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(44, 62, 80, 0.9);
     color: #fff;
-    padding: 5px 8px;
-    border-radius: 4px;
+    padding: 5px 10px;
+    border-radius: 5px;
     opacity: 0;
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
     white-space: nowrap;
-    font-size: 12px;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 1000;
 }
 
 .desk:hover::after {
     opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
 }
-
-
-.desk.booked::after {
-    content: attr(data-name);  /* Show user's name */
-}
-
-.desk:hover::after {
-    opacity: 1;
-}
-
 
 /* Modal Styles */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
-    z-index: 1000; /* Ensure it appears on top of other content */
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100vw;
@@ -97,43 +115,94 @@ h1 {
     background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
+    backdrop-filter: blur(5px);
 }
-
 
 .modal-content {
     background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     position: relative;
     animation: fadeIn 0.3s ease-in-out;
 }
 
-
-/* Optional fade-in effect */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: scale(0.9);
+        transform: scale(0.9) translateY(-20px);
     }
     to {
         opacity: 1;
-        transform: scale(1);
+        transform: scale(1) translateY(0);
     }
 }
 
-
 /* Close button styles */
 .close {
-    color: #333;
-    float: right;
-    font-size: 28px;
+    color: #7f8c8d;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
     font-weight: bold;
     cursor: pointer;
+    transition: color 0.2s ease;
 }
 
 .close:hover, .close:focus {
-    color: red;
+    color: #e74c3c;
+}
+
+/* Form Styles */
+#userNameInput {
+    width: 80%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+#userNameInput:focus {
+    outline: none;
+    border-color: #2ecc71;
+}
+
+#confirmBooking {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#confirmBooking:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #deskMap {
+        width: 95%;
+        height: 60vh;
+    }
+
+    .desk {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .modal-content {
+        width: 90%;
+        max-width: 350px;
+    }
 }
