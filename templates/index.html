@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Desk Booking</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    
+    <body>
+        <div class="container">
+            <h1>Book a Desk</h1>
+            <ul>
+                {% for desk in desks %}
+                    <li>
+                        Desk {{ desk.id }} - {{ 'Booked' if desk.booked else 'Available' }}
+                        {% if not desk.booked %}
+                            <button onclick="bookDesk({{ desk.id }})">Book</button>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+    
+            <a href="/map">View Desk Map</a>
+        </div>
+    
+        <script>
+            function bookDesk(deskId) {
+                fetch('/book_desk', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ desk_id: deskId }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    window.location.reload();
+                });
+            }
+        </script>
+    </body>
+</html>

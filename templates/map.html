@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desk Map</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Desk Booking Map</h1>
+    <div id="deskMap" style="position: relative; width: 800px; height: 600px; border: 2px solid black;"></div>
+
+    <!-- Name input dialog (hidden by default) -->
+    <div id="nameModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Enter your name:</p>
+            <input type="text" id="userNameInput" placeholder="Your name" />
+            <button id="confirmBooking">Book</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        const desks = {{ desks | tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='booking.js') }}"></script>
+</body>
+</html>
