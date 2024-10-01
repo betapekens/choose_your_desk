@@ -1,5 +1,27 @@
 function createDeskMap(desks) {
     const map = document.getElementById('deskMap');
+    digitalHub = document.createElement('div')
+    digitalHub.classList.add('digitalHub')
+    digitalHub.style.left = '150px';
+    digitalHub.style.top = '30px';
+    digitalHub.innerText = 'DigitalHub';
+    map.appendChild(digitalHub)
+
+    digitalHub = document.createElement('div')
+    digitalHub.classList.add('digitalHub')
+    digitalHub.style.left = '500px';
+    digitalHub.style.top = '30px';
+    digitalHub.innerText = 'Ufficio Seb';
+    digitalHub.style.width= '150px';
+    map.appendChild(digitalHub)
+
+    digitalHub = document.createElement('div')
+    digitalHub.classList.add('digitalHub')
+    digitalHub.style.left = '435px';
+    digitalHub.style.top = '350px';
+    digitalHub.innerText = 'Customer Services';
+    digitalHub.style.height= '150px';
+    map.appendChild(digitalHub)
 
     desks.forEach(desk => {
         const deskDiv = document.createElement('div');

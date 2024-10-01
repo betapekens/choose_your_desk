@@ -34,6 +34,12 @@ h1::after {
     border-radius: 2px;
 }
 
+.countdown {
+    font-size: 1.2em;
+    color: #7f8c8d;
+    margin-top: 10px;
+    font-weight: 500;
+}
 
 /* Desk Map Container */
 #deskMap {
@@ -48,6 +54,27 @@ h1::after {
     border-radius: 15px;
     overflow: hidden;
 }
+
+
+.digitalHub {
+    width: 225px;
+    height: 100px;
+    background-color: grey;
+    position: absolute;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 20px; /* Changed from 16px to 12px */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 
 /* Desk Styles */
 .desk {
@@ -67,6 +94,10 @@ h1::after {
     font-size: 12px; /* Changed from 16px to 12px */
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.desk.booked {
+    background-color: #e74c3c;
 }
 
 .desk.booked {
@@ -205,4 +236,12 @@ h1::after {
         width: 90%;
         max-width: 350px;
     }
+}
+
+.area {
+    position: absolute;
+    border: 2px solid #666;
+    padding: 5px;
+    background-color: #e6e6e6;
+    font-size: 14px;
 }

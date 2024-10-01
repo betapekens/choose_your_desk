@@ -49,6 +49,24 @@ document.getElementById('userNameInput').addEventListener('keyup', function(even
     }
 });
 
+// Countdown functionality
+function updateCountdown() {
+    const now = new Date();
+    const nextRefresh = new Date(now);
+    nextRefresh.setHours(18, 0, 0, 0); // Set to next midnight
+    
+    const timeUntilRefresh = nextRefresh - now;
+    const hoursUntilRefresh = Math.floor(timeUntilRefresh / (1000 * 60 * 60));
+    const minutesUntilRefresh = Math.floor((timeUntilRefresh % (1000 * 60 * 60)) / (1000 * 60));
+    
+    const countdownElement = document.getElementById('countdown');
+    countdownElement.textContent = `Next refresh in ${hoursUntilRefresh} hours and ${minutesUntilRefresh} minutes`;
+}
+
+// Update countdown every minute
+updateCountdown();
+setInterval(updateCountdown, 60000);
+
 // Function to toggle desk status
 function toggleDesk(deskId, action, userName = null) {
     const body = { desk_id: deskId, action: action };
